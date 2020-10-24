@@ -17,13 +17,12 @@
 
 package guru.springframework.brewery.web.model;
 
+import java.time.OffsetDateTime;
+import java.util.UUID;
 import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
-
-import java.time.OffsetDateTime;
-import java.util.UUID;
 
 @Data
 @NoArgsConstructor
@@ -32,10 +31,11 @@ public class OrderStatusUpdate extends BaseItem {
 
     @Builder
     public OrderStatusUpdate(UUID id, Integer version, OffsetDateTime createdDate, OffsetDateTime lastModifiedDate,
-                             UUID orderId, OrderStatusEnum orderStatus) {
+                             UUID orderId, OrderStatusEnum orderStatus, String customerRef) {
         super(id, version, createdDate, lastModifiedDate);
         this.orderId = orderId;
         this.orderStatus = orderStatus;
+        this.customerRef = customerRef;
     }
 
     private UUID orderId;

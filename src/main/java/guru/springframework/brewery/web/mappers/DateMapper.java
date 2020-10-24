@@ -17,11 +17,10 @@
 
 package guru.springframework.brewery.web.mappers;
 
-import org.springframework.stereotype.Component;
-
 import java.sql.Timestamp;
 import java.time.OffsetDateTime;
 import java.time.ZoneOffset;
+import org.springframework.stereotype.Component;
 
 /**
  * Created by jt on 2019-02-13.
@@ -29,7 +28,7 @@ import java.time.ZoneOffset;
 @Component
 public class DateMapper {
 
-    OffsetDateTime asOffsetDateTime(Timestamp ts){
+    public OffsetDateTime asOffsetDateTime(Timestamp ts){
         if (ts != null){
             return OffsetDateTime.of(ts.toLocalDateTime().getYear(), ts.toLocalDateTime().getMonthValue(),
                     ts.toLocalDateTime().getDayOfMonth(), ts.toLocalDateTime().getHour(), ts.toLocalDateTime().getMinute(),
@@ -39,7 +38,7 @@ public class DateMapper {
         }
     }
 
-    Timestamp asTimestamp(OffsetDateTime offsetDateTime){
+    public Timestamp asTimestamp(OffsetDateTime offsetDateTime){
         if(offsetDateTime != null) {
             return Timestamp.valueOf(offsetDateTime.atZoneSameInstant(ZoneOffset.UTC).toLocalDateTime());
         } else {
